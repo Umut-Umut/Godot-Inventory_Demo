@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://inventory/inventory.gd" type="Script" id=1]
+
+[node name="inventory" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="chest_inv" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="chest_inv"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.235294 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="chest_inv"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -108.0
+margin_right = -8.0
+margin_bottom = 84.0
+mouse_default_cursor_shape = 2
+
+[node name="ItemList2" type="ItemList" parent="chest_inv"]
+margin_left = 520.0
+margin_top = 192.0
+margin_right = 648.0
+margin_bottom = 384.0
+mouse_default_cursor_shape = 2
+
+[node name="player_inv" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="player_inv"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -96.0
+margin_right = 64.0
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_activated" from="chest_inv/ItemList" to="." method="_on_ItemList_item_activated"]
+[connection signal="item_activated" from="chest_inv/ItemList2" to="." method="_on_ItemList2_item_activated"]
